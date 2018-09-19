@@ -1,14 +1,12 @@
 package com.viome.interview.dao;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "actor")
-public class Actor implements Serializable{
+public class Actor{
 	@Id
 	@Column(name = "actor_id")
 	int actor_id;
