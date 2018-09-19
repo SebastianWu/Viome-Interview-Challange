@@ -9,6 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+// when given a customer’s first name as a command line argument
+// outputs either “true” or “false” depending
+// on whether the customer is in the database.
 public class CheckCustomer {
 
 	public static void main(String[] args) {
