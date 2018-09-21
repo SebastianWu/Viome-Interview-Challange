@@ -1,6 +1,5 @@
 package com.viome.interview.business;
 
-import com.viome.interview.dao.Actor;
 
 import java.util.List;
 
@@ -13,19 +12,19 @@ import org.hibernate.cfg.AnnotationConfiguration;
 // outputs either “true” or “false” depending
 // on whether the customer is in the database.
 public class CheckCustomer {
-
+	
+	// you need to change the command line in put at Run configurations, the default first name is a invalid one.
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		if(args.length != 1) {
+			System.out.println("Wrong command line input number, should be exactly one!");
+			System.exit(-1);
+		}
+		String target = args[0];
+		System.out.println("Find target first name: "+target);
 		SessionFactory sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		Session session = sessionFactory.openSession();
-
-		Query q = session.createQuery("SELECT actor_id, first_name, last_name, last_update FROM com.viome.interview.dao.Actor");
-		List<Object[]> actor = q.list();
-		System.out.println(actor.size());
-		for(Object[] a : actor) {
-			System.out.println(a[0].toString()+" "+a[1].toString()+" "+a[2].toString()+" "+a[3].toString());
-		}
-		System.out.println("~");
+		Query q = session.createQuery("SELECT first_name FROM com.viome.interview.dao.Customer WHERE first_name = '"+target+"'");
+		System.out.println(q.uniqueResult()!=null);
 	}
 
 }
